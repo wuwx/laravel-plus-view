@@ -15,6 +15,6 @@ class LaravelPlusViewServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        $this->app->make('Illuminate\Contracts\Http\Kernel')->prependMiddleware(LaravelPlusViewMiddleware::class);
     }
 }

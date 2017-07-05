@@ -16,6 +16,6 @@ Next add the following service provider in `config/app.php`.
 
 ```php
 'providers' => [
-  Wuwx\LaravelPlusView\LaravelPlusViewServiceProvider::class,
+    Wuwx\LaravelPlusView\LaravelPlusViewServiceProvider::class,
 ],
 ```

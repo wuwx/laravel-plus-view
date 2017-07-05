@@ -3,6 +3,7 @@
 namespace Wuwx\LaravelPlusView;
 
 use Closure;
+use Illuminate\Support\Facades\View;
 
 class LaravelPlusViewMiddleware
 {
@@ -15,7 +16,11 @@ class LaravelPlusViewMiddleware
      */
     public function handle($request, Closure $next)
     {
+        $_format = $request->get('_format') ?: $request->format();
+        View::addExtension("$_format.blade.php", "blade");
+
         $response = $next($request);
+
         if ($response->status() == '200') {
             switch ($request->format()) {
                 case 'json':

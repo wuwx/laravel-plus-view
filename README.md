@@ -14,8 +14,28 @@ composer require wuwx/laravel-plus-view
 
 Next add the following service provider in `config/app.php`.
 
-```php
+``` php
 'providers' => [
     Wuwx\LaravelPlusView\LaravelPlusViewServiceProvider::class,
 ],
+```
+
+#### Add Blade Template
+
+`index.html.blade.php`
+``` blade
+<h1>{{ $dataTypeContent->title }}</h1>
+```
+
+`index.json.blade.php`
+``` blade
+{!! json_encode($dataTypeContent) !!}
+```
+
+### Test
+
+``` bash
+curl http://localhost:8000/users
+curl http://localhost:8000/users?_format=json
+curl http://localhost:8000/users -H "Accept: application/json"
 ```

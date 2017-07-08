@@ -1,5 +1,7 @@
 # laravel-plus-view
 
+[![Latest Stable Version](https://poser.pugx.org/wuwx/laravel-plus-view/v/stable.png)](https://packagist.org/packages/wuwx/laravel-plus-view) [![Total Downloads](https://poser.pugx.org/wuwx/laravel-plus-view/downloads.png)](https://packagist.org/packages/wuwx/laravel-plus-view)
+
 ## Installation
 
 ### Quick

@@ -17,6 +17,7 @@ class LaravelPlusViewMiddleware
     public function handle($request, Closure $next)
     {
         $_format = $request->get('_format') ?: $request->format();
+        View::addExtension("$_format.php", "php");
         View::addExtension("$_format.blade.php", "blade");
 
         $response = $next($request);

@@ -3,6 +3,7 @@
 namespace Wuwx\LaravelPlusView;
 
 use Closure;
+use Illuminate\Http\Testing\MimeType;
 use Illuminate\Support\Facades\View;
 
 class LaravelPlusViewMiddleware

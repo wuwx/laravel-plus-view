@@ -14,24 +14,22 @@ class LaravelPlusViewMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+        public function handle($request, Closure $next)
     {
         $_format = $request->get('_format') ?: $request->format();
-        View::addExtension("$_format.php", "php");
-        View::addExtension("$_format.blade.php", "blade");
+        if (array_get(MimeType::get(), $_format)) {
+            View::addExtension("$_format.php", "php");
+            View::addExtension("$_format.blade.php", "blade");
+        }
 
         $response = $next($request);
 
-        if ($response->status() == '200') {
-            switch ($request->format()) {
-                case 'json':
-                    $response->header('Content-Type', 'application/json');
-                    break;
-                case 'xml':
-                    $response->header('Content-Type', 'application/xml');
-                    break;
+        if (array_get(MimeType::get(), $_format)) {
+            if ($response->status() == '200') {
+                $response->header('Content-Type', MimeType::get($_format));
             }
         }
+
         return $response;
     }
 }

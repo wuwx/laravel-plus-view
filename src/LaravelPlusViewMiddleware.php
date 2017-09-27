@@ -14,7 +14,7 @@ class LaravelPlusViewMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-        public function handle($request, Closure $next)
+    public function handle($request, Closure $next)
     {
         $_format = $request->get('_format') ?: $request->format();
         if (array_get(MimeType::get(), $_format)) {

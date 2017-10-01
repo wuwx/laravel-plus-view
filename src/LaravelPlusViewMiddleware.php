@@ -26,8 +26,12 @@ class LaravelPlusViewMiddleware
         $response = $next($request);
 
         if (array_get(MimeType::get(), $_format)) {
-            if ($response->status() == '200') {
-                $response->header('Content-Type', MimeType::get($_format));
+            $original = $response->original;
+            if (is_a($original, 'Illuminate\View\View')) {
+                $path = $original->getPath();
+                if (ends_with($path, "$_format.php") || ends_with($path, "$_format.blade.php")) {
+                    $response->header('Content-Type', MimeType::get($_format));
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 {
     "name": "wuwx/laravel-plus-view",
     "type": "library",
+    "keywords": ["laravel", "view"],
     "license": "MIT",
     "authors": [
         {

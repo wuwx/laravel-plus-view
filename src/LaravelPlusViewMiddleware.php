@@ -25,7 +25,7 @@ class LaravelPlusViewMiddleware
 
         $response = $next($request);
 
-        if (array_get(MimeType::get(), $_format)) {
+        if (array_get(MimeType::get(), $_format) && is_a($response, 'Illuminate\Http\Response')) {
             $original = $response->original;
             if (is_a($original, 'Illuminate\View\View')) {
                 $path = $original->getPath();

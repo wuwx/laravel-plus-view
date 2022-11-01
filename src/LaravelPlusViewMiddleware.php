@@ -4,8 +4,8 @@ namespace Wuwx\LaravelPlusView;
 
 use Closure;
 use Illuminate\Http\Testing\MimeType;
-use Symfony\Component\Mime\MimeTypes;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
 
 class LaravelPlusViewMiddleware
 {
@@ -31,7 +31,7 @@ class LaravelPlusViewMiddleware
             $original = $response->original;
             if (is_a($original, 'Illuminate\View\View')) {
                 $path = $original->getPath();
-                if (ends_with($path, "$_format.php") || ends_with($path, "$_format.blade.php")) {
+                if (Str::endsWith($path, "$_format.php") || Str::endsWith($path, "$_format.blade.php")) {
                     $response->header('Content-Type', MimeType::get($_format));
                 }
             }

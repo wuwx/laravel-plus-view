@@ -7,18 +7,19 @@ use Wuwx\LaravelPlusView\LaravelPlusViewServiceProvider;
 
 abstract class TestCase extends OrchestraTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->app['router']->get("/", function () {
+            return view("index");
+        });
+    }
+
     protected function getPackageProviders($app)
     {
         return [
             LaravelPlusViewServiceProvider::class,
         ];
-    }
-
-    protected function defineRoutes($router)
-    {
-        $router->get("/", function () {
-            return view("index");
-        });
     }
 
     protected function getBasePath()

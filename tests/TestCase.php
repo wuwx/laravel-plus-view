@@ -13,4 +13,16 @@ abstract class TestCase extends OrchestraTestCase
             LaravelPlusViewServiceProvider::class,
         ];
     }
+
+    protected function defineRoutes($router)
+    {
+        $router->get("/", function () {
+            return view("index");
+        });
+    }
+
+    protected function getBasePath()
+    {
+        return __DIR__.'/../skeleton';
+    }
 }

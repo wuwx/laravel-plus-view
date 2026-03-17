@@ -20,8 +20,8 @@
 
 ## 环境要求
 
-- PHP 7.3 或更高版本
-- Laravel 5.6 或更高版本
+- PHP 7.3 或更高版本（Laravel 13 需要 PHP 8.2+）
+- Laravel 5.6 或更高版本（含 Laravel 13）
 
 ## 安装
 
